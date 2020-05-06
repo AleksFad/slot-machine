@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+
+// General Settings
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-family: 'Patua One', cursive;
+  color: #202020;
+  background-color: #000;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style-type: none;
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+}
+
+.pay-table__wrapper {
+  display: block;
+  max-width: 350px;
+  margin-left: 10px;
+  margin-top: 10px;
+
+  .heading {
+    text-align: center;
+    font-size: 20px;
+    color: #ff0000;
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 5px solid #00ffff;
+    padding: 10px 15px;
+    border-radius: 20px;
+
+    &.blinking {
+      animation: blinkingText 1.2s infinite;
+    }
+    @keyframes blinkingText {
+      0% {
+        background-color: red;
+      }
+      49% {
+        background-color: red;
+      }
+      60% {
+        background-color: #000;
+      }
+      99% {
+        background-color: #000;
+      }
+      100% {
+        background-color: red;
+      }
+    }
+  }
+
+  .column {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .image-column__left {
+    margin-right: 10px;
+    img {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+    }
+  }
+  li {
+    margin-bottom: 5px;
+    color: #9400d3;
+  }
+}
+
+.table__wrapper {
+  width: 700px;
+  margin-top: 60px;
+  margin-left: 30px;
+  background-color: #363b3f;
+  padding: 20px;
+  height: 600px;
+  border-radius: 20px;
+
+  .grid {
+    border: 20px solid #00ffff;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .reel {
+        margin-top: 50px;
+      }
+
+      .reel-image {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+
+.score {
+  display: block;
+  height: 100px;
+  border: 3px solid red;
+  margin-left: 30px;
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    .column-balance,
+    .column-bet {
+      color: #9400d3;
+      font-size: 20px;
+      h3 {
+        margin-bottom: 5px;
+      }
+    }
+    .column-btn {
+      .spin-btn {
+        position: relative;
+        top: 0px;
+        color: white;
+        width: 120px;
+        height: 50px;
+        background: #228b22;
+        font-size: 20px;
+        border-radius: 10px;
+        transition: all 0.2s;
+        box-shadow: 0px 8px 0px 0px darken(#228b22, 5%),
+          0px 0px 20px 0px #228b22;
+        outline: 0;
+        &.disable {
+          color: #000;
+          background: #a9a9a9;
+          box-shadow: 0px 8px 0px 0px darken(#a9a9a9, 5%),
+            0px 0px 20px 0px #a9a9a9;
+        }
+        &:active {
+          top: 8px;
+          box-shadow: 0px 3px 0px 0px darken(#228b22, 5%);
+        }
+      }
+    }
+  }
+}
+
+// "Reel" animation
+
+.reel-left .reel .reel-spinning {
+  animation-delay: 0s;
+}
+
+.reel-center .reel .reel-spinning {
+  animation-delay: 0.5s;
+}
+
+.reel-right .reel .reel-spinning {
+  animation-delay: 1s;
+}
+
+.reel-spinning {
+  animation-name: reel-spinning;
+  animation-duration: 0.1s;
+  animation-iteration-count: 20;
+  animation-direction: alternate;
+}
+
+@keyframes reel-spinning {
+  from {
+    transform: translateY(-1000px);
+  }
+  25% {
+    transform: translateY(-600px);
+  }
+  75% {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-1000px);
+  }
+}
